@@ -4,7 +4,7 @@ import { useUserContext } from "@/utils/contexts";
 import { RecipeType, userContextType } from "@/utils/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { fetchRecipes } from "@/utils/functions";
 
 const RandomMeals = () => {
     const { user } = useUserContext() as userContextType;
@@ -12,22 +12,15 @@ const RandomMeals = () => {
 
 
     useEffect(() => {
-        const fetchRecipes = async () => {
-          try {
-            if (user) {
-              const response = await fetch(
-                `https://www.themealdb.com/api/json/v1/1/filter.php?c=${user?.category}`
-              );
-              const data = await response.json();
+        const fetchdata = async () => {
+        
+             const data = await fetchRecipes({endpoints: `filter.php?c=${user?.category}`})
+            console.log(data)
               const shuffledRecipes = data.meals.sort(() => Math.random() - 0.5);
               const topFiveRecipes = shuffledRecipes.slice(0, 6);
               setRecipes(topFiveRecipes);
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        fetchRecipes();
+        }
+        fetchdata()
       }, []);
 
     return (

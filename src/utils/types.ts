@@ -18,5 +18,5 @@ export type RecipeType = {
     strInstructions?: string
 }
 export type RecepieFetchTypes = {
-    parameter : string
+    endpoints : string
 }
