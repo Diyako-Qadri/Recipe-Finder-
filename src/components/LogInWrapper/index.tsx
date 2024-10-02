@@ -13,9 +13,11 @@ const LogInWrapper = ({ children }: { children: React.ReactNode }) => {
         <LogIn />
       ) : (
         <>
+        <div>
           <Menu/>
           <p>Hi {user.name}</p>
           {children}
+          </div>
         </>
       )}
     </div>

@@ -23,12 +23,11 @@ const LogIn = () => {
   };
 
   return (
-    <div>
-      sf
+    <div className='flex   flex-col justify-center items-center '>
       <p>To log in please enter your user name</p>
       <label htmlFor="user-input">Enter User Name</label>
-      <input type="text" id="user-input" onChange={handleChange} />
-      <button onClick={handleClick}>Log in</button>
+      <input className='max-w-[200px] text-black' type="text" id="user-input" onChange={handleChange} />
+      <button className='bg-[#f87800] px-8 py-1 m-3 rounded-[20px]' onClick={handleClick}>Log in</button>
     </div>
   );
 };
