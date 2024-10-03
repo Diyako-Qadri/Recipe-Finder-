@@ -20,3 +20,17 @@ export type RecipeType = {
 export type RecepieFetchTypes = {
     endpoints : string
 }
+
+export type CategoryType = {
+    map(arg0: (meal: CategoryType) => import("react").JSX.Element): import("react").ReactNode
+    strCategory: string,
+    idCategory: number,
+    strCategoryThumb: string,
+    strCategoryDescription: string 
+}
+
+export type MealCardTypes = {
+    name: string,
+    id:string,
+    image: string
+}

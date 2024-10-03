@@ -15,7 +15,7 @@ const Header = ({ LogIn }: HeaderProps) => {
 
   return (
     <header className=" flex flex-col items-center transition-transform transform ease-in-out duration-700 justify-between w-full text-center  ">
-      <div className="flex px-3 text-white flex-row bg-[#d05411] justify-between w-full items-center rounded-br-[16px] rounded-bl-[16px]">
+      <div className="flex px-3 text-white flex-row bg-[#4e9a5d] justify-between w-full items-center rounded-br-[16px] rounded-bl-[16px]">
         <Image src={logo} height={80} alt="logo" width={100}></Image>
        {!user ? <div
           onClick={() => LogIn()}
@@ -32,7 +32,7 @@ const Header = ({ LogIn }: HeaderProps) => {
         </div>} 
       </div>
       {user ? (
-        <div className="flex flex-row justify-end items-center border-b-[1px] border-[#d05411] w-full ">
+        <div className="flex flex-row justify-end items-center border-b-[1px] border-[#4e9a5d] w-full ">
           <div className="flex p-2 w-full flex-row justify-around">
             <Menu />
           </div>

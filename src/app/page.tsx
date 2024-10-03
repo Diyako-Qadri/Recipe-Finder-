@@ -12,8 +12,8 @@ export default function Home() {
     <div className="">
       {user ? (
         <div className="relative p-1 s:p-6 flex flex-row items-center ml-3">
-         <span className='text-[#ff9d15] text-5xl '><RiRectangleFill /></span> 
-          <span className="  border-[1px] py-[2.5px] px-4 border-[#ff9d15]">{user.name}'s category </span>
+         <span className='text-[#4e9a5d] text-5xl '><RiRectangleFill /></span> 
+          <span className="  border-[1px] py-[2.5px] px-4 border-[#4e9a5d]">{user.name}'s category </span>
         </div>
       ) : null}
       <RandomMeals/>

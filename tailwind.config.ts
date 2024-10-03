@@ -1,4 +1,14 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+
+const customPlugin = plugin(function ({ addUtilities }) {
+  const newUtilities = {
+    ".webkit-backdrop-blur": {
+      "-webkit-backdrop-filter": "blur(10px)",
+    },
+  };
+  addUtilities(newUtilities);
+});
 
 const config: Config = {
   content: [
@@ -13,11 +23,11 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       screens: {
-        s:  "580px"
-      }
-     
+        s: "580px",
+      },
     },
   },
-  plugins: [],
+  plugins: [customPlugin],
 };
+
 export default config;

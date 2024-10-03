@@ -1,11 +1,68 @@
-
+"use client";
+import { fetchRecipes } from "@/utils/functions";
+import { useEffect, useState, useRef } from "react";
+import { useUserContext } from "@/utils/contexts";
+import { CategoryType, userContextType } from "@/utils/types";
+import Link from "next/link";
 
 const Category = () => {
-    return (
-        <div>
-          <p>Category Page</p>
-        </div>
-    )
+  const { user } = useUserContext() as userContextType;
+  const [category, setCategory] = useState<CategoryType[] | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]); 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchRecipes({ endpoints: `categories.php` });
+      console.log(data.categories);
+      setCategory(data.categories);
+    };
+    fetchData();
+  }, []);
+
+
+  useEffect(() => {
+    if (category && cardsRef.current.length) {
+      cardsRef.current.forEach((card) => {
+        if (card) {
+          let randomAniDelay = Math.random() * 0.5;
+          card.style.animation = `fadeIn 1s ${randomAniDelay}s ease forwards`;
+        }
+      });
+    }
+  }, [category]);
+
+  return (
+    <div>
+      <p>Category Page</p>
+      <div className="grid m-auto s:grid-cols-2 lg:grid-cols-3 items-center justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
+        {category &&
+          category.map((meal: CategoryType, index) => (
+            <div
+              ref={(el) => {
+                if (el) {
+                  cardsRef.current[index] = el;
+                }
+              }}
+              className="relative boxShadow category-cards bg-[#fec30adb] rounded-xl w-full h-full p-4"
+              key={meal.idCategory}
+            >
+              <Link href={`/category/${meal.strCategory}`}>
+                <span className="absolute bg-[#4e9a5d] text-xl text-white left-0 px-3 rounded-r-lg mt-2">
+                  {meal.strCategory}
+                </span>
+                <img
+                  src={meal.strCategoryThumb}
+                  alt="category"
+                  height="auto"
+                  width="100%"
+                />
+              </Link>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 };
 
-export default Category
+export default Category;
