@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #c4c4c4;
-  --foreground: #ffffff;
+  --background: #f3f2f2;
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f9f7f7;
+    --background: #eeeeee;
     --foreground: #363636;
   }
 }
@@ -30,6 +30,9 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
+.categoryBg {
+  background: linear-gradient(to bottom right, #fec30adb 50%, #f0f0f0 50%);
+}
 
 .line::before {
   content: '';
@@ -43,7 +46,7 @@ body {
 
 
 .boxShadow {
-  /* box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.219); */
+ 
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 50px -12px;
 }
 

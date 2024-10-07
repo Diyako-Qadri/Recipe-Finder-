@@ -34,8 +34,8 @@ const Category = () => {
 
   return (
     <div>
-      <p>Category Page</p>
-      <div className="grid m-auto s:grid-cols-2 lg:grid-cols-3 items-center justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
+     
+      <div className="grid m-auto s:grid-cols-2 lg:grid-cols-3 items-center justify-items-center  s:p-2 h-full p-0 md:p-8 gap-0 s:gap-4 md:gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
         {category &&
           category.map((meal: CategoryType, index) => (
             <div
@@ -44,7 +44,7 @@ const Category = () => {
                   cardsRef.current[index] = el;
                 }
               }}
-              className="relative boxShadow category-cards bg-[#fec30adb] rounded-xl w-full h-full p-4"
+              className="relative md:boxShadow category-cards categoryBg  s:rounded-xl w-full h-full p-4"
               key={meal.idCategory}
             >
               <Link href={`/category/${meal.strCategory}`}>
