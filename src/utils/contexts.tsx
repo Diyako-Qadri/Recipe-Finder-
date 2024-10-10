@@ -1,18 +1,21 @@
-"use client"
-import React, { createContext, useContext, useState } from "react";
-import { userContextType, UserType } from "./types";
+'use client';
 
-const userContext = createContext<userContextType | null>(null)
+import React, { createContext, useContext, useState } from 'react';
+import { userContextType, UserType } from './types';
 
-export const UserProvider = ({children}:{children:React.ReactNode}) => {
-    const[user, setUser] = useState<UserType | null>(null)
-    return (
-        <userContext.Provider value={{user, setUser}}>
-            {children}
-        </userContext.Provider>
-    )
-}
+const userContext = createContext<userContextType | null>(null);
 
-export const useUserContext = ()=> {
-    return useContext(userContext)
-}
+
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<UserType | null>(null);
+
+  return (
+    <userContext.Provider value={{ user, setUser }}>
+      {children}
+    </userContext.Provider>
+  );
+};
+
+export const useUserContext = () => {
+  return useContext(userContext);
+};

@@ -4,16 +4,25 @@ export const registeredUsers:UserType[]= [
     {
         name: "Johan",
         category: "Seafood",
-        savedRecipes: []
+        savedRecipes: [],
+        savedCategory:[],
+        image: "johan.jpg",
+        email: "johan@recipefinder.com"
     },
     {
-        name: "Erika",
+        name: "Johanna",
         category: "Beef",
-        savedRecipes:[]
+        savedRecipes:[],
+        savedCategory:[],
+        image: "johanna.jpg",
+        email: "johanna@recipefinder.com"
     },
     {
-        name: "Davide",
+        name: "Rebecka",
         category: "Vegan",
-        savedRecipes:[]
+        savedRecipes:[],
+        savedCategory:[],
+        image: "rebecka.jpg",
+        email: "rebecka@recipefinder.com"
     }
 ]

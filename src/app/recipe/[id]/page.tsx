@@ -1,18 +1,23 @@
 'use client';
 
-import { RecipeType } from '@/utils/types';
+import { RecipeType, userContextType } from '@/utils/types';
 import { useEffect, useState } from 'react';
 import { fetchRecipes } from '@/utils/functions';
 import ingredientLogo from '../../../../public/ingredient.png';
+import {useUserContext} from "@/utils/contexts";
 import Image from 'next/image';
+import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoIosHeart } from "react-icons/io";
+
+
 const RecipePage = ({ params }: { params: { id: string } }) => {
+
   const { id } = params;
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeType | null>(null);
-  const [ingredientsWithMeasures, setIngredientsWithMeasures] = useState<
-    { ingredient: string; measure: string }[] | null
-  >(null);
+  const [ingredientsWithMeasures, setIngredientsWithMeasures] = useState<{ ingredient: string; measure: string }[] | null>(null);
   const [showInstructions, setShowInstructions] = useState<boolean>(false);
-
+  const { user, setUser } = useUserContext() as userContextType;
+  const [liked, setLiked]= useState<boolean>(false)
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchRecipes({ endpoints: `lookup.php?i=${id}` });
@@ -41,23 +46,59 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
 
         console.log(data.meals[0]);
         setSelectedRecipe(meal);
-
         setIngredientsWithMeasures(combined);
+
+        if (user?.savedRecipes && user.savedRecipes.includes(id)) {
+          setLiked(true); 
+        } else {
+          setLiked(false); 
+        }
       }
     };
-    console.log(selectedRecipe);
     fetchData();
-  }, [id]);
-  console.log(ingredientsWithMeasures?.length);
+  }, [id, user]);
+
+  useEffect(() => {
+    if (user && user.savedRecipes) {
+      setLiked(user.savedRecipes.includes(id));
+    }
+  }, [user, id]);
   const embedUrl = (url: string): string => {
     return url.replace('watch?v=', 'embed/');
   };
 
+  const handleClick = () => {
+    if (user) {
+      if (user.savedRecipes.includes(id)) {
+        const x = user.savedRecipes.filter(item => item !== id);
+        console.log('deleting ' + id);
+        user.savedRecipes = x;
+        console.log(typeof(x))
+        console.log(user.savedRecipes)
+        setUser({...user});
+        setLiked(false); 
+      } else {
+        user.savedRecipes = [...user.savedRecipes, id];
+        setUser({ ...user });
+        console.log('working...');
+        console.log(user.savedRecipes);
+        setLiked(true);
+      }
+    }
+  };
+
+
   return (
     <div className="flex flex-col justify-center items-center">
       {selectedRecipe && (
-        <div className="flex flex-col w-full pb-7 lg:w-[88%] max-w-[1280px] items-center justify-center lg:my-8 boxShadow rounded-lg">
-          <div className="flex flex-col items-center md:items-stretch md:flex-row w-full justify-evenly p-0 md:p-6">
+        <div className="flex flex-col w-full pb-7 md:w-[88%] max-w-[1280px] items-center justify-center md:my-8 boxShadow rounded-lg">
+          <div className="flex flex-col relative items-center md:items-stretch md:flex-row w-full justify-evenly p-0">
+          <button
+        onClick={handleClick}
+        className="absolute md:right-0  p-1 text-[34px] text-white bg-red-400 rounded-tr-[10px] rounded-bl-[10px]"
+      >{liked ? <IoIosHeart /> : <IoIosHeartEmpty /> }
+        
+      </button>
             <div className="flex flex-col items-center mx-auto p-8 max-w-[550px] w-[80%] justify-evenly">
               <h3 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">
                 {selectedRecipe.strMeal}
@@ -94,7 +135,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
             </div>
 
             <img
-              className="rounded-[26px] boxShadow  w-[92%] mb-16 md:mb-0  md:w-[50%] max-w-[600px]"
+              className=" md:rounded-bl-[16px] md:rounded-tr-[16px] boxShadow  w-[92%] mb-16 md:mb-0  md:w-[50%] max-w-[600px]"
               src={selectedRecipe.strMealThumb}
               alt={selectedRecipe.strMeal}
               height="auto"

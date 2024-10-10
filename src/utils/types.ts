@@ -2,16 +2,22 @@ export type UserType = {
   name: string;
   category: string;
   savedRecipes: string[];
+  savedCategory: [];
+  image: string;
+  email: string;
 };
 
 export type userContextType = {
-  user: UserType | null;
-  setUser: (user: UserType | null) => void;
-};
+    user: UserType | null;
+    setUser: (user: UserType | null) => void;
+}
+
+
 
 export type RecepieFetchTypes = {
   endpoints: string;
 };
+
 
 export type CategoryType = {
   map(
@@ -27,6 +33,7 @@ export type MealCardTypes = {
   name: string;
   id: string;
   image: string;
+
 };
 
 export type RecipeCardType = {
@@ -54,9 +61,7 @@ export type RecipesCardType = {
 };
 
 export type RecipeType = {
-  map(
-    arg0: (meal: RecipeType) => import('react').JSX.Element
-  ): import('react').ReactNode;
+  id: string;
   strMeal: string;
   idMeal: string;
   strMealThumb: string;
