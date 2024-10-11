@@ -16,9 +16,14 @@ const RandomMeals = () => {
       const data = await fetchRecipes({
         endpoints: `filter.php?c=${user?.category}`,
       });
-      
+
       const shuffledRecipes = data.meals.sort(() => Math.random() - 0.5);
-      const topSixRecipes = shuffledRecipes.slice(0, 6);
+
+      const filteredRecipes = shuffledRecipes.filter(  
+        (meal: any) => !user?.savedRecipes.includes(meal.idMeal)
+      );
+
+      const topSixRecipes = filteredRecipes.slice(0, 6);
 
       const recipes = topSixRecipes.map((meal: any) => ({
         name: meal.strMeal,

@@ -21,18 +21,13 @@ useEffect(() => {
 const handleClick = () => {
     if (user) {
       if (user.savedRecipes.includes(id)) {
-        const x = user.savedRecipes.filter(item => item !== id);
-        console.log('deleting ' + id);
-        user.savedRecipes = x;
-        console.log(typeof(x))
-        console.log(user.savedRecipes)
+        const unlikedRecipe = user.savedRecipes.filter(item => item !== id);
+        user.savedRecipes = unlikedRecipe ;
         setUser({...user});
         setLiked(false); 
       } else {
         user.savedRecipes = [...user.savedRecipes, id];
         setUser({ ...user });
-        console.log('working...');
-        console.log(user.savedRecipes);
         setLiked(true);
       }
     }

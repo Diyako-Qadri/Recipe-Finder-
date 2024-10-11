@@ -70,18 +70,13 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
   const handleClick = () => {
     if (user) {
       if (user.savedRecipes.includes(id)) {
-        const x = user.savedRecipes.filter(item => item !== id);
-        console.log('deleting ' + id);
-        user.savedRecipes = x;
-        console.log(typeof x);
-        console.log(user.savedRecipes);
+        const unlikedRecipe = user.savedRecipes.filter(item => item !== id);
+        user.savedRecipes = unlikedRecipe ;
         setUser({ ...user });
         setLiked(false);
       } else {
         user.savedRecipes = [...user.savedRecipes, id];
         setUser({ ...user });
-        console.log('working...');
-        console.log(user.savedRecipes);
         setLiked(true);
       }
     }
@@ -134,7 +129,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
             </div>
 
             <img
-              className=" md:rounded-bl-[16px] md:rounded-tr-[16px] boxShadow  w-[92%] mb-16 md:mb-0  md:w-[50%] max-w-[600px]"
+              className="rounded-xl md:rounded-br-none md:rounded-tl-none  boxShadow  w-[92%] mb-16 md:mb-0  md:w-[50%] max-w-[600px]"
               src={selectedRecipe.strMealThumb}
               alt={selectedRecipe.strMeal}
               height="auto"
@@ -142,7 +137,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
             />
              <button
               onClick={handleClick}
-              className="block  md:hidden left-0 px-6 p-1 text-[34px] text-white bg-red-400  rounded-[6px] "
+              className="block  md:hidden left-0 px-6 mb-6 p-1 text-[34px] text-white bg-red-400  rounded-[6px] "
             >
               {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
             </button>
