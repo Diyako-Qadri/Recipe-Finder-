@@ -4,20 +4,20 @@ import { RecipeType, userContextType } from '@/utils/types';
 import { useEffect, useState } from 'react';
 import { fetchRecipes } from '@/utils/functions';
 import ingredientLogo from '../../../../public/ingredient.png';
-import {useUserContext} from "@/utils/contexts";
+import { useUserContext } from '@/utils/contexts';
 import Image from 'next/image';
 import { IoIosHeartEmpty } from 'react-icons/io';
-import { IoIosHeart } from "react-icons/io";
-
+import { IoIosHeart } from 'react-icons/io';
 
 const RecipePage = ({ params }: { params: { id: string } }) => {
-
   const { id } = params;
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeType | null>(null);
-  const [ingredientsWithMeasures, setIngredientsWithMeasures] = useState<{ ingredient: string; measure: string }[] | null>(null);
+  const [ingredientsWithMeasures, setIngredientsWithMeasures] = useState<
+    { ingredient: string; measure: string }[] | null
+  >(null);
   const [showInstructions, setShowInstructions] = useState<boolean>(false);
   const { user, setUser } = useUserContext() as userContextType;
-  const [liked, setLiked]= useState<boolean>(false)
+  const [liked, setLiked] = useState<boolean>(false);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchRecipes({ endpoints: `lookup.php?i=${id}` });
@@ -49,9 +49,9 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
         setIngredientsWithMeasures(combined);
 
         if (user?.savedRecipes && user.savedRecipes.includes(id)) {
-          setLiked(true); 
+          setLiked(true);
         } else {
-          setLiked(false); 
+          setLiked(false);
         }
       }
     };
@@ -73,10 +73,10 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
         const x = user.savedRecipes.filter(item => item !== id);
         console.log('deleting ' + id);
         user.savedRecipes = x;
-        console.log(typeof(x))
-        console.log(user.savedRecipes)
-        setUser({...user});
-        setLiked(false); 
+        console.log(typeof x);
+        console.log(user.savedRecipes);
+        setUser({ ...user });
+        setLiked(false);
       } else {
         user.savedRecipes = [...user.savedRecipes, id];
         setUser({ ...user });
@@ -87,18 +87,17 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
     }
   };
 
-
   return (
     <div className="flex flex-col justify-center items-center">
       {selectedRecipe && (
         <div className="flex flex-col w-full pb-7 md:w-[88%] max-w-[1280px] items-center justify-center md:my-8 boxShadow rounded-lg">
           <div className="flex flex-col relative items-center md:items-stretch md:flex-row w-full justify-evenly p-0">
-          <button
-        onClick={handleClick}
-        className="absolute md:right-0  p-1 text-[34px] text-white bg-red-400 rounded-tr-[10px] rounded-bl-[10px]"
-      >{liked ? <IoIosHeart /> : <IoIosHeartEmpty /> }
-        
-      </button>
+            <button
+              onClick={handleClick}
+              className="absolute hidden md:block md:left-0 px-6 p-1 text-[34px] text-white transition-all ease-in-out duration-500 bg-red-400 hover:bg-red-500 rounded-tl-[10px] rounded-br-[10px]"
+            >
+              {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
+            </button>
             <div className="flex flex-col items-center mx-auto p-8 max-w-[550px] w-[80%] justify-evenly">
               <h3 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">
                 {selectedRecipe.strMeal}
@@ -141,6 +140,12 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
               height="auto"
               width="50%"
             />
+             <button
+              onClick={handleClick}
+              className="block  md:hidden left-0 px-6 p-1 text-[34px] text-white bg-red-400  rounded-[6px] "
+            >
+              {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
+            </button>
 
             <ul className="md:hidden flex gap-2  flex-wrap">
               {typeof selectedRecipe.strTags === 'string'
