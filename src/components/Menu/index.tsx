@@ -1,14 +1,19 @@
-
 import Link from 'next/link';
+import MobileNav from './MobileNav';
 
 const Menu = () => {
-    return (
-       <nav className='flex flex-row text-lg uppercase justify-around w-full max-w-[1280px]'>
+  return (
+    <>
+      <div className="flex md:hidden">
+        <MobileNav />
+      </div>
+      <nav className="hidden  md:flex flex-row text-lg uppercase justify-around w-full max-w-[980px]">
         <Link href="/">Home</Link>
-        <Link href="/profile">Profile</Link>
         <Link href="/category">Category</Link>
-       </nav>
-    )
+        <Link href="/profile">Profile</Link>
+      </nav>
+    </>
+  );
 };
 
-export default Menu
+export default Menu;

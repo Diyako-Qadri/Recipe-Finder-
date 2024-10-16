@@ -1,12 +1,11 @@
 "use client";
 import { fetchRecipes } from "@/utils/functions";
 import { useEffect, useState, useRef } from "react";
-import { useUserContext } from "@/utils/contexts";
-import { CategoryType, userContextType } from "@/utils/types";
+import { CategoryType} from "@/utils/types";
 import Link from "next/link";
 
 const Category = () => {
-  const { user } = useUserContext() as userContextType;
+
   const [category, setCategory] = useState<CategoryType[] | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]); 
 
@@ -33,7 +32,7 @@ const Category = () => {
   }, [category]);
 
   return (
-    <div>
+    <div className="pt-20">
      
       <div className="grid m-auto s:grid-cols-2 lg:grid-cols-3 items-center justify-items-center s:p-2 h-full p-0 md:p-8 gap-0 s:gap-4 md:gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
         {category &&
