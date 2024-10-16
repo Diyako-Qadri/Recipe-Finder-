@@ -40,6 +40,7 @@ const recipePage = ({ params }: { params: { name: string } }) => {
 
   return (
     <div className="w-full flex flex-col items-center pt-[7rem]">
+      <h2 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">{name}</h2>
       {categoryDescription && (
         <div className="text-center p-5 max-w-[1080px]">
           <div className='text-xl'>
