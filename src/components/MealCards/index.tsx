@@ -39,7 +39,7 @@ const handleClick = () => {
     >
       <button
         onClick={handleClick}
-        className="absolute right-0 mt-4 px-3 p-1 text-[34px] text-white bg-red-400 md:hover:bg-red-500 transition-all ease-in-out duration-300 rounded-tl-[8px] rounded-bl-[8px]"
+        className="absolute right-3 mt-3 p-2 text-[34px] text-white bg-red-400 md:hover:bg-red-500 transition-all ease-in-out duration-300 rounded-[50px] "
       >{liked ? <IoIosHeart /> : <IoIosHeartEmpty /> }
         
       </button>

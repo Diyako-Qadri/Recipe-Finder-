@@ -48,7 +48,7 @@ const Profile = () => {
   }, [user?.savedRecipes]);
 
   return (
-    <div>
+    <div className="pt-20">
       <div className="flex items-center">
         {user ? (
           <div className="p-5 flex flex-col gap-4 max-w-[1280px] m-auto w-full items-center md:items-start">
@@ -67,7 +67,7 @@ const Profile = () => {
               </div>
             </div>
             {user ? (
-              <div className="relative p-1   w-full flex flex-row max-w-[1280px] border-b-[2px] border-[#fe880af2] items-center ml-3">
+              <div className="relative p-1   w-full flex flex-row max-w-[1280px] border-b-[2px] border-[#4e9a5d] items-center ml-3">
                 <span className="flex flex-row  items-center gap-2 max-w-[1280px]    py-[2.5px] px-[2px] ">
                   {' '}
                   <span className="text-[#fec30adb] text-[30px] ">
@@ -78,11 +78,13 @@ const Profile = () => {
               </div>
             ) : null}
 
-            <div className="grid relative m-auto w-fulb  s:grid-cols-2 lg:grid-cols-3 justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
+            <div className="grid relative m-auto w-full s:grid-cols-2 lg:grid-cols-3 justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
               {savedRecipe ? (
                 savedRecipe.map(meal => <MealCards key={meal.id} {...meal} />)
               ) : (
-                <div className='absolute w-full text-center '>No recipes's saved</div>
+                <div className="absolute w-full text-center ">
+                  No recipes's saved
+                </div>
               )}
             </div>
           </div>
@@ -90,7 +92,7 @@ const Profile = () => {
       </div>
       <div className="p-5 flex flex-col gap-4 max-w-[1280px] m-auto w-full items-center md:items-start">
         {user ? (
-          <div className="relative p-1 flex flex-row max-w-[1280px] w-full border-b-[2px] border-[#fe880af2] items-center ml-3">
+          <div className="relative p-1 flex flex-row max-w-[1280px] w-full border-b-[2px] border-[#4e9a5d] items-center ml-3">
             <span className="flex flex-row items-center gap-2  py-[2.5px] px-[2px] ">
               {' '}
               <span className="text-[#fec30adb] text-[30px] ">

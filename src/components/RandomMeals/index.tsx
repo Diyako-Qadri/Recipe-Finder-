@@ -17,20 +17,18 @@ const RandomMeals = () => {
         endpoints: `filter.php?c=${user?.category}`,
       });
 
-      const shuffledRecipes = data.meals.sort(() => Math.random() - 0.5);
-
-      const filteredRecipes = shuffledRecipes.filter(  
+      const filteredRecipes = data.meals.filter(  
         (meal: any) => !user?.savedRecipes.includes(meal.idMeal)
       );
 
       const topSixRecipes = filteredRecipes.slice(0, 6);
 
-      const recipes = topSixRecipes.map((meal: any) => ({
+      const recipe = topSixRecipes.map((meal: any) => ({
         name: meal.strMeal,
         id: meal.idMeal,
         image: meal.strMealThumb,
       }));
-      setRecipes(recipes);
+      setRecipes(recipe);
     };
     fetchdata();
   }, []);
