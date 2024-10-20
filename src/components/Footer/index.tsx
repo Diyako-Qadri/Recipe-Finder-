@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </div>
     <div className='p-3'>
-      &copy; All right reserved by Diyako Qadri
+      &copy; All rights reserved by Diyako Qadri
     </div>
     </footer>
   );
