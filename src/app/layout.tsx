@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { UserProvider } from '@/utils/contexts';
 import LayoutWrapper from '@/components/LayoutWrapper';
+import HeroMessage from '@/components/HeroMessage';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >
         <UserProvider>
           <LayoutWrapper children={children} />
