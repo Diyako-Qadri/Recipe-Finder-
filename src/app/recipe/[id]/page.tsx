@@ -19,7 +19,6 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
   const { user, setUser } = useUserContext() as userContextType;
   const [liked, setLiked] = useState<boolean>(false);
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchRecipes({ endpoints: `lookup.php?i=${id}` });
@@ -85,19 +84,11 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className="flex flex-col top-10  justify-center items-center">
+    <div className="flex flex-col top-10 bg-white  justify-center items-center">
       {selectedRecipe && (
-        <div className="flex flex-col  w-full pb-7 md:w-[88%] max-w-[1280px] items-center justify-center md:my-8 boxShadow rounded-lg">
-          <div className=""></div>
-          <img
-            className=" md:rounded-br-none md:rounded-tl-none top-20 fixed z-[-10]  w-full mb-1  md:hidden "
-            src={selectedRecipe.strMealThumb}
-            alt={selectedRecipe.strMeal}
-            height="auto"
-            width="50%"
-          />
-          <div className="top-[300px] pb-10  md:max-w-[1280px] absolute md:block bg-whiteSahdow WhiteboxShadow md:bg-none  md:top-16">
-            <div className="flex bg-whiteSahdow WhiteboxShadow s:box-shadow-none flex-col relative items-center md:items-stretch md:flex-row w-full justify-evenly p-0">
+        <div className="flex flex-col w-full pb-7 md:w-[100%] bg-white md:bg-inherit max-w-[1280px] items-center justify-center md:my-8  rounded-lg">
+          <div className=" pb-10  md:max-w-[1280px]  md:block bg-whiteSahdow  md:bg-none top-[400px]  md:top-16">
+            <div className="flex   z-10 md:top-10 s:box-shadow-none flex-col relative items-center md:items-stretch md:flex-row w-full justify-evenly p-0">
               <div className="hidden  md:flex flex-col items-center mx-auto p-8 max-w-[550px] w-[80%] justify-evenly">
                 <h3 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">
                   {selectedRecipe.strMeal}
@@ -138,25 +129,25 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
                   </ul>
                 </div>
               </div>
-
               <img
-                className="rounded-xl md:rounded-br-none md:rounded-tl-none top-20 hidden md:flex w-full mb-1 md:mb-0 md:w-[50%] max-w-[600px]"
+                className="rounded-none md:rounded-br-none relative md:static  md:rounded-tl-none z-[-10] md:z-0 top-20  md:flex w-full mb-1 md:mb-0 md:w-[50%] max-w-[900px]"
                 src={selectedRecipe.strMealThumb}
                 alt={selectedRecipe.strMeal}
                 height="auto"
                 width="50%"
               />
-              <h3 className="text-[#5a5555] md:hidden py-4 text-[34px] text-center font-semibold">
-                {selectedRecipe.strMeal}
-              </h3>
-              <button
-                onClick={handleClick}
-                className="block md:hidden left-0 px-6 mb-6 p-1 text-[34px] text-white bg-red-400  rounded-[6px] "
-              >
-                {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
-              </button>
-
-              <ul className="md:hidden flex gap-2  flex-wrap">
+              <div className="bg-whiteSahdow w-full items-center flex flex-col md:hidden">
+                <h3 className="text-[#5a5555] md:hidden py-4 text-[34px] text-center font-semibold">
+                  {selectedRecipe.strMeal}
+                </h3>
+                <button
+                  onClick={handleClick}
+                  className="block md:hidden left-0 px-6 mb-6 p-1 text-[34px] text-white bg-red-400  rounded-[6px] "
+                >
+                  {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
+                </button>
+              </div>
+              <ul className="md:hidden flex gap-2 flex-wrap">
                 {typeof selectedRecipe.strTags === 'string'
                   ? selectedRecipe.strTags
                       .split(',')
@@ -174,6 +165,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
                       <li key={index}>{tag}</li>
                     ))}
               </ul>
+
               {ingredientsWithMeasures && (
                 <div className="flex border-b-[1px] py-2 border-[black] mt-4 mb-1 items-center gap-2 md:hidden">
                   <Image src={ingredientLogo} alt="ahad" width={20} />
@@ -184,7 +176,7 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
                 </div>
               )}
             </div>
-            <div className="flex flex-col bg-white items-center lg:flex-row justify-around p-3 gap-6">
+            <div className="flex flex-col md:mt-[60px]  items-center lg:items-start lg:flex-row justify-around p-3 gap-6">
               <div className="block w-full z-10 lg:w-[30%] max-w-[600px]">
                 <ul className="gap-3">
                   {ingredientsWithMeasures &&
@@ -194,11 +186,11 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
                         key={index}
                       >
                         <div className="w-full flex flex-row-reverse">
-                          <span className="bg-gray-200 py-[4px] text-end px-2 rounded-l-3xl">
+                          <span className="bg-gray-200  py-[4px] text-end px-2 rounded-l-3xl">
                             {item.measure}
                           </span>
                         </div>
-                        <div className="w-full flex flex-rowa items-center ">
+                        <div className="w-full flex flex-row items-center ">
                           <span className="text-start">{item.ingredient}</span>
                         </div>
                       </li>
@@ -224,8 +216,8 @@ const RecipePage = ({ params }: { params: { id: string } }) => {
                 </button>
               </div>
             </div>
-            <div className='flex justify-center items-center w-full '>
-              <div className="relative w-full max-w-[990px] bg-white">
+            <div className="flex justify-center items-center w-full ">
+              <div className="relative w-full max-w-[990px]">
                 {selectedRecipe.strYoutube && (
                   <iframe
                     width="90%"
