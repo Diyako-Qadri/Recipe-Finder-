@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 const HeroMessage = () => {
   return (
-    <div className="md:w-full w-screen flex justify-start md:justify-center bg-homeHero-image mt-20 h-[80vh] bg-cover bg-no-repeat  ">
+    <div className="md:w-full w-screen flex justify-center bg-homeHero-image mt-20 h-[80vh] bg-cover bg-no-repeat  ">
       <motion.div
         initial={{
           y: 50,
