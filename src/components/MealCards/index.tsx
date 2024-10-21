@@ -3,28 +3,27 @@
 import Link from 'next/link';
 import { MealCardTypes, userContextType } from '@/utils/types';
 import { IoIosHeartEmpty } from 'react-icons/io';
-import { IoIosHeart } from "react-icons/io";
+import { IoIosHeart } from 'react-icons/io';
 import { useUserContext } from '@/utils/contexts';
 import { useEffect, useState } from 'react';
 
-
 const MealCards = ({ name, id, image }: MealCardTypes) => {
   const { user, setUser } = useUserContext() as userContextType;
-const [liked, setLiked]= useState<boolean>(false)
-  
-useEffect(() => {
-  if (user && user.savedRecipes) {
-    setLiked(user.savedRecipes.includes(id));
-  }
-}, [user, id]);
+  const [liked, setLiked] = useState<boolean>(false);
 
-const handleClick = () => {
+  useEffect(() => {
+    if (user && user.savedRecipes) {
+      setLiked(user.savedRecipes.includes(id));
+    }
+  }, [user, id]);
+
+  const handleClick = () => {
     if (user) {
       if (user.savedRecipes.includes(id)) {
         const unlikedRecipe = user.savedRecipes.filter(item => item !== id);
-        user.savedRecipes = unlikedRecipe ;
-        setUser({...user});
-        setLiked(false); 
+        user.savedRecipes = unlikedRecipe;
+        setUser({ ...user });
+        setLiked(false);
       } else {
         user.savedRecipes = [...user.savedRecipes, id];
         setUser({ ...user });
@@ -40,8 +39,8 @@ const handleClick = () => {
       <button
         onClick={handleClick}
         className="absolute right-3 mt-3 p-2 text-[34px] text-white bg-red-400 md:hover:bg-red-500 transition-all ease-in-out duration-300 rounded-[50px] "
-      >{liked ? <IoIosHeart /> : <IoIosHeartEmpty /> }
-        
+      >
+        {liked ? <IoIosHeart /> : <IoIosHeartEmpty />}
       </button>
       <Link
         className="flex flex-col items-center boxShadow cursor-pointer justify-between rounded-[20px] "

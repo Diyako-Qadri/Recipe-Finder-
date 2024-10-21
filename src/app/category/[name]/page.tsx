@@ -40,13 +40,15 @@ const recipePage = ({ params }: { params: { name: string } }) => {
 
   return (
     <div className="w-full flex flex-col items-center pt-[7rem]">
-      <h2 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">{name}</h2>
+      <h2 className="text-[#5a5555] py-4 text-[34px] text-center font-semibold">
+        {name}
+      </h2>
       {categoryDescription && (
         <div className="text-center p-5 max-w-[1080px]">
-          <div className='text-xl'>
+          <div className="text-xl">
             {categoryDescription.replace(/[\[\]\d]/g, '')}
           </div>
-          <p className='py-5 text-xl'>
+          <p className="py-5 text-xl">
             Here are some recipes for delicious {name.toLowerCase()} dishes.
           </p>
         </div>

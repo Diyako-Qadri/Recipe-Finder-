@@ -17,7 +17,6 @@ const Footer = () => {
             info@recipe.com
           </a>
         </div>
-
         <div className="flex flex-col text-start text-xl gap-4  pb-4">
           {user && (
             <>

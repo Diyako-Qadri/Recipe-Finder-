@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useUserContext } from '@/utils/contexts';
 import LogIn from '../LogIn';
@@ -8,14 +8,14 @@ import Menu from '../Menu';
 const LogInWrapper = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext() as userContextType;
   return (
-    <div className='relative'>
+    <div className="relative">
       {!user ? (
         <LogIn />
       ) : (
         <>
-        <div>
-          <Menu/>
-          {children}
+          <div>
+            <Menu />
+            {children}
           </div>
         </>
       )}

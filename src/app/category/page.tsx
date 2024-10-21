@@ -1,14 +1,12 @@
-"use client";
-import { fetchRecipes } from "@/utils/functions";
-import { useEffect, useState, useRef } from "react";
-import { CategoryType} from "@/utils/types";
-import Link from "next/link";
+'use client';
+import { fetchRecipes } from '@/utils/functions';
+import { useEffect, useState, useRef } from 'react';
+import { CategoryType } from '@/utils/types';
+import Link from 'next/link';
 
 const Category = () => {
-
   const [category, setCategory] = useState<CategoryType[] | null>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]); 
-
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,10 +17,9 @@ const Category = () => {
     fetchData();
   }, []);
 
-
   useEffect(() => {
     if (category && cardsRef.current.length) {
-      cardsRef.current.forEach((card) => {
+      cardsRef.current.forEach(card => {
         if (card) {
           let randomAniDelay = Math.random() * 0.5;
           card.style.animation = `fadeIn 1s ${randomAniDelay}s ease forwards`;
@@ -33,12 +30,11 @@ const Category = () => {
 
   return (
     <div className="pt-20">
-     
       <div className="grid m-auto s:grid-cols-2 lg:grid-cols-3 items-center justify-items-center s:p-2 h-full p-0 md:p-8 gap-0 s:gap-4 md:gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
         {category &&
           category.map((meal: CategoryType, index) => (
             <div
-              ref={(el) => {
+              ref={el => {
                 if (el) {
                   cardsRef.current[index] = el;
                 }
