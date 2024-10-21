@@ -7,8 +7,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#4e9a5d] text-white p-10 text-center  items-center">
-      <div className="flex flex-col md:flex-row justify-around border-b-2 border-white">
-        <div className="flex flex-col text-start">
+      <div className="flex flex-col gap-4 md:flex-row justify-around border-b-2 border-white">
+        <div className="flex flex-col gap-4 mb-5 text-start">
           <h3 className="text-xl pb-2">contact us:</h3>
           <a href="tel:0702222222" className="text-xl" target="_blank">
             070- 222 22 22
@@ -18,7 +18,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-col text-start text-xl  pb-4">
+        <div className="flex flex-col text-start text-xl gap-4  pb-4">
           {user && (
             <>
               <Link href="/">Home</Link>
