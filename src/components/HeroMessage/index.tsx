@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 const HeroMessage = () => {
   return (
-    <div className="md:w-full w-screen flex justify-center bg-homeHero-image mt-20 h-[80vh] bg-cover bg-no-repeat  ">
+    <div className="md:w-full w-screen flex justify-start md:justify-center bg-homeHero-image mt-20 h-[80vh] bg-cover bg-no-repeat  ">
       <motion.div
         initial={{
           y: 50,
@@ -20,7 +20,7 @@ const HeroMessage = () => {
           },
         }}
         viewport={{ once: true }}
-        className="flex flex-col w-3/ max-w-[500px] justify-center   self-center bg-[#e99921ea]  h-[160px] md:h-[30%] items-center"
+        className="flex flex-col w-3/4 max-w-[500px] justify-start   self-center bg-[#e99921ea]  h-[160px] md:h-[30%] items-center"
       >
         <h2 className="text-[#f3f9f2] py-2  text-[34px]  md:text-[54px] text-center font-semibold">
           Gourmet Guide
