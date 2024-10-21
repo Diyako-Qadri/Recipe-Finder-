@@ -26,6 +26,8 @@ const config: Config = {
         s: "580px",
         // small: "480px"
       },
+      backgroundImage: {
+        "homeHero-image": " url(/food3.jpg)",}
     },
   },
   plugins: [customPlugin],
