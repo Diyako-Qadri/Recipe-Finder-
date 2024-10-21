@@ -22,7 +22,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="flex fixed  w-[300px] flex-col bg-[#4e9a5d] right-2 top-[6rem] m-auto pt-6 text-white z-30 abslute justify-center  items-center">
+    <div className="flex fixed  w-[300px] flex-col bg-[#4e9a5d] left-0 right-2 top-[6rem] m-auto pt-6 text-white z-30 abslute justify-center  items-center">
       <p>To log in please enter your user name</p>
       <label htmlFor="user-input">Enter User Name</label>
       <input
