@@ -8,14 +8,13 @@ import Menu from '../Menu';
 const LogInWrapper = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext() as userContextType;
   return (
-    <div>
+    <div className='relative'>
       {!user ? (
         <LogIn />
       ) : (
         <>
         <div>
           <Menu/>
-          <p>Hi {user.name}</p>
           {children}
           </div>
         </>
