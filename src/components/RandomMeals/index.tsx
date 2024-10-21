@@ -48,11 +48,11 @@ const RandomMeals = () => {
   return (
     <>
       {user ? (
-        <div className="relative p-1 s:p-6 flex flex-row max-w-[1280px] w-full items-center ">
+        <div className="relative p-1 s:p-6 mt-5 flex flex-row max-w-[1280px] w-full items-center ">
           <span className="text-[#4e9a5d] text-5xl flex items-center  ">
             <RiRectangleFill />
             <span className="text-xl  border-[1px] py-[1px]  px-4 border-[#4e9a5d]">
-              {user.name}'s category
+              {user.category} 
             </span>
           </span>
         </div>
