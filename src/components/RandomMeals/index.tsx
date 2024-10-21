@@ -21,7 +21,7 @@ const RandomMeals = () => {
       const filteredRecipes = data.meals.filter(
         (meal: any) => !user?.savedRecipes.includes(meal.idMeal)
       );
-
+console.log(filteredRecipes)
       const topSixRecipes = filteredRecipes.slice(0, 6);
 
       const recipe = topSixRecipes.map((meal: any) => ({

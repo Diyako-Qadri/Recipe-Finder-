@@ -78,7 +78,7 @@ const Profile = () => {
               </div>
             ) : null}
 
-            <div className="grid relative m-auto w-full s:grid-cols-2 lg:grid-cols-3 justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
+            <div className="grid relative m-auto w-full grow s:grid-cols-2 lg:grid-cols-3 justify-items-center h-full p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-[1280px]">
               {savedRecipe ? (
                 savedRecipe.map(meal => <MealCards key={meal.id} {...meal} />)
               ) : (
