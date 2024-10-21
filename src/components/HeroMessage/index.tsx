@@ -7,10 +7,7 @@ const HeroMessage = () => {
       <motion.div
         initial={{
           y: 50,
-          opacity: 0,
-          transition: {
-            delay: 2,
-          },
+          opacity: 0
         }}
         whileInView={{
           y: 0,
