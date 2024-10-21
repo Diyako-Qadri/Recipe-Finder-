@@ -34,7 +34,7 @@ body {
 }
 
 .categoryBg {
-  background: linear-gradient(to bottom right, #fec30adb 50%, #f0f0f0 50%);
+  background: linear-gradient(to bottom right, #fec30adb 50%, #bab70024 50%);
 }
 
 .line::before {
