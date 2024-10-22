@@ -33,7 +33,7 @@ const MealCards = ({ name, id, image }: MealCardTypes) => {
   };
   return (
     <div
-      className=" relative w-full boxShadow h-full  felx items-centern rounded-[20px] justify-center "
+      className=" relative w-full boxShadow  felx items-centern rounded-[20px] justify-center "
       key={id}
     >
       <button
